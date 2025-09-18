@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/applications")
-@CrossOrigin(origins = "*")
+
 public class ApplicationController {
     private final ApplicationRepository repo;
 
