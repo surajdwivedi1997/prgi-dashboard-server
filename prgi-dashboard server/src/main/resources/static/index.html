@@ -37,7 +37,11 @@
             <table>
                 <thead>
                 <tr>
-                    <th>#</th><th>Applicant</th><th>Reference</th><th>Submitted</th><th>Remarks</th>
+                    <th>#</th>
+                    <th>Applicant</th>
+                    <th>Reference</th>
+                    <th>Submitted</th>
+                    <th>Remarks</th>
                 </tr>
                 </thead>
                 <tbody id="modalBody"></tbody>
@@ -46,6 +50,7 @@
     </div>
 </div>
 
-<script src="js/app.js"></script>
+<!-- Load JS after DOM is parsed -->
+<script src="js/app.js" defer></script>
 </body>
 </html>
