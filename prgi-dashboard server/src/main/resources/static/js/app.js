@@ -1,4 +1,7 @@
-const API = 'http://localhost:8080/api/applications';
+// Detect environment: local vs deployed
+const API_BASE = window.location.hostname === "localhost"
+  ? "http://localhost:8080/api/applications"
+  : "https://prgi-dashboard-server.up.railway.app/api/applications";
 
 const ModuleLabels = {
     NEW_REG: 'New Reg',
@@ -76,7 +79,7 @@ async function loadSummary() {
     if (!selectedFrom || !selectedTo) return;
     document.getElementById('info').textContent =
         `Showing data from ${selectedFrom} to ${selectedTo}`;
-    const res = await fetch(`${API}/summary?fromDate=${selectedFrom}&toDate=${selectedTo}`);
+    const res = await fetch(`${API_BASE}/summary?fromDate=${selectedFrom}&toDate=${selectedTo}`);
     const json = await res.json();
     ModuleOrder.forEach(m => {
         StatusOrder.forEach(s => {
@@ -91,7 +94,7 @@ async function openDetails(moduleKey, statusKey) {
         alert("Please select a range first!");
         return;
     }
-    const url = `${API}?module=${moduleKey}&status=${statusKey}&fromDate=${selectedFrom}&toDate=${selectedTo}`;
+    const url = `${API_BASE}?module=${moduleKey}&status=${statusKey}&fromDate=${selectedFrom}&toDate=${selectedTo}`;
     const res = await fetch(url);
     const rows = await res.json();
     document.getElementById('modalTitle').textContent =
