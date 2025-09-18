@@ -13,13 +13,15 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
+                registry.addMapping("/**") // allow all endpoints
                         .allowedOrigins(
-                                "http://localhost:5500",  // for local frontend testing
-                                "https://prgi-dashboard-server-production.up.railway.app" // Railway frontend
+                                "https://prgi-dashboard-server-production.up.railway.app", // your frontend
+                                "http://localhost:8080", // local dev backend
+                                "http://127.0.0.1:5500"   // optional: VSCode live server
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowCredentials(true);
+                        .allowedHeaders("*")
+                        .allowCredentials(false);
             }
         };
     }
