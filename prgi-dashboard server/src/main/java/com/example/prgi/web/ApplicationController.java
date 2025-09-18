@@ -23,13 +23,24 @@ public class ApplicationController {
 
     @GetMapping
     public List<ApplicationDto> list(
-            @RequestParam ModuleType module,
-            @RequestParam Status status,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate
+            @RequestParam(required = false) ModuleType module,
+            @RequestParam(required = false) Status status,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate
     ) {
-        return repo.findByModuleTypeAndStatusAndSubmittedDateBetween(module, status, fromDate, toDate)
-                .stream()
+        // If all filters are provided → filtered query
+        if (module != null && status != null && fromDate != null && toDate != null) {
+            return repo.findByModuleTypeAndStatusAndSubmittedDateBetween(module, status, fromDate, toDate)
+                    .stream()
+                    .map(a -> new ApplicationDto(
+                            a.getId(), a.getModuleType(), a.getStatus(),
+                            a.getApplicantName(), a.getReferenceNo(),
+                            a.getSubmittedDate(), a.getLastUpdated(), a.getRemarks()))
+                    .toList();
+        }
+
+        // Otherwise → return all applications
+        return repo.findAll().stream()
                 .map(a -> new ApplicationDto(
                         a.getId(), a.getModuleType(), a.getStatus(),
                         a.getApplicantName(), a.getReferenceNo(),
