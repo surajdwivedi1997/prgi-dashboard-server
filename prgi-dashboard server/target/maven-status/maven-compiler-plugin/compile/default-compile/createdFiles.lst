@@ -1,0 +1,8 @@
+com/example/prgi/web/dto/ApplicationDto.class
+com/example/prgi/PrgiDashboardApplication.class
+com/example/prgi/domain/Status.class
+com/example/prgi/web/ApplicationController.class
+com/example/prgi/config/CorsConfig.class
+com/example/prgi/domain/ApplicationEntity.class
+com/example/prgi/domain/ModuleType.class
+com/example/prgi/repo/ApplicationRepository.class

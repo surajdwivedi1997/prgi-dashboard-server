@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PRGI Applications Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <div class="filters">
+        <strong>Select Period:</strong>
+        <select id="rangeSelect">
+            <option value="">-- Select --</option>
+            <option value="2025-08-18|2025-08-28">18-08-2025 to 28-08-2025</option>
+            <option value="2025-08-01|2025-08-30">01-08-2025 to 30-08-2025</option>
+        </select>
+        <button id="btnApply">Apply</button>
+        <span id="info" class="info"></span>
+    </div>
+</header>
+
+<main id="modules"></main>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="backdrop">
+    <div class="modal">
+        <header>
+            <div>
+                <div id="modalTitle" class="modal-title"></div>
+                <div id="modalSub" class="modal-sub"></div>
+            </div>
+            <button class="close" onclick="hideModal()">Close</button>
+        </header>
+        <div class="content">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th><th>Applicant</th><th>Reference</th><th>Submitted</th><th>Remarks</th>
+                </tr>
+                </thead>
+                <tbody id="modalBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+package com.example.prgi.domain;
+
+public enum ModuleType {
+    NEW_REG,
+    NEW_EDITION,
+    REVISED_REGISTRATION,
+    OWNERSHIP,
+    DISCONTINUATION_OF_PUBLICATION,
+    NEWSPRINT_DECLARATION_AUTHENTICATION
+}
