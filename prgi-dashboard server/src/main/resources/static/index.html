@@ -17,6 +17,10 @@
             <option value="2025-08-01|2025-08-30">01-08-2025 to 30-08-2025</option>
         </select>
         <button id="btnApply">Apply</button>
+
+        <!-- ✅ Download Excel button -->
+        <button id="btnDownloadExcel">Download Excel</button>
+
         <span id="info" class="info"></span>
     </div>
 </header>
@@ -24,7 +28,7 @@
 <main id="modules"></main>
 
 <!-- Modal -->
-<div class="modal-backdrop" id="backdrop">
+<div class="modal-backdrop" id="backdrop" style="display:none;">
     <div class="modal">
         <header>
             <div>
@@ -50,7 +54,7 @@
     </div>
 </div>
 
-<!-- Load JS after DOM is parsed -->
-<script src="js/app.js" defer></script>
+<!-- Link JS -->
+<script src="js/app.js"></script>
 </body>
 </html>
