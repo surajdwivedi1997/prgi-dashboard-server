@@ -5,6 +5,7 @@ import com.example.prgi.domain.ModuleType;
 import com.example.prgi.domain.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,8 +14,8 @@ public interface ApplicationRepository extends JpaRepository<ApplicationEntity, 
     List<ApplicationEntity> findByModuleTypeAndStatusAndSubmittedDateBetween(
             ModuleType moduleType, Status status, LocalDate from, LocalDate to);
 
-    // ✅ New method for global filtering (used in Excel export)
-    List<ApplicationEntity> findBySubmittedDateBetween(LocalDate from, LocalDate to);
+    // ✅ Needed for Excel export
+    List<ApplicationEntity> findBySubmittedDateBetween(LocalDate fromDate, LocalDate toDate);
 
     @Query("""
         SELECT a.moduleType, a.status, COUNT(a)
